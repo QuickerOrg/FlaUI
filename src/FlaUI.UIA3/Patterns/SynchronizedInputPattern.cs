@@ -21,12 +21,12 @@ namespace FlaUI.UIA3.Patterns
 
         public override void Cancel()
         {
-            Com.Call(() => NativePattern.Cancel());
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.Cancel());
         }
 
         public override void StartListening(SynchronizedInputType inputType)
         {
-            Com.Call(() => NativePattern.StartListening((UIA.SynchronizedInputType)inputType));
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.StartListening((UIA.SynchronizedInputType)inputType));
         }
     }
 

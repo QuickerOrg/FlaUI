@@ -23,7 +23,7 @@ namespace FlaUI.UIA3.Patterns
         public ITextRange GetCaretRange(out bool isActive)
         {
             var rawIsActive = 0;
-            var nativeTextRange = Com.Call(() => ExtendedNativePattern.GetCaretRange(out rawIsActive));
+            var nativeTextRange = FlaUI.Core.Tools.Com.Call(() => ExtendedNativePattern.GetCaretRange(out rawIsActive));
             isActive = rawIsActive != 0;
             return TextRangeConverter.NativeToManaged((UIA3Automation)FrameworkAutomationElement.Automation, nativeTextRange);
         }
@@ -31,7 +31,7 @@ namespace FlaUI.UIA3.Patterns
         public ITextRange RangeFromAnnotation(AutomationElement annotation)
         {
             var nativeInputElement = annotation.ToNative();
-            var nativeElement = Com.Call(() => ExtendedNativePattern.RangeFromAnnotation(nativeInputElement));
+            var nativeElement = FlaUI.Core.Tools.Com.Call(() => ExtendedNativePattern.RangeFromAnnotation(nativeInputElement));
             return TextRangeConverter.NativeToManaged((UIA3Automation)FrameworkAutomationElement.Automation, nativeElement);
         }
     }

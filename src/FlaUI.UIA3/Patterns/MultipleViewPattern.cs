@@ -19,12 +19,12 @@ namespace FlaUI.UIA3.Patterns
 
         public override string GetViewName(int view)
         {
-            return Com.Call(() => NativePattern.GetViewName(view));
+            return FlaUI.Core.Tools.Com.Call(() => NativePattern.GetViewName(view));
         }
 
         public override void SetCurrentView(int view)
         {
-            Com.Call(() => NativePattern.SetCurrentView(view));
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.SetCurrentView(view));
         }
     }
 

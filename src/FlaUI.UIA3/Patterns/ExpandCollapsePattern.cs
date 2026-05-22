@@ -18,12 +18,12 @@ namespace FlaUI.UIA3.Patterns
 
         public override void Collapse()
         {
-            Com.Call(() => NativePattern.Collapse());
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.Collapse());
         }
 
         public override void Expand()
         {
-            Com.Call(() => NativePattern.Expand());
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.Expand());
         }
     }
 

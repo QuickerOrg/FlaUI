@@ -18,7 +18,7 @@ namespace FlaUI.UIA3.Patterns
 
         public void Realize()
         {
-            Com.Call(() => NativePattern.Realize());
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.Realize());
         }
     }
 }

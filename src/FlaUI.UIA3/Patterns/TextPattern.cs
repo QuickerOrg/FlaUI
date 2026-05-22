@@ -26,7 +26,7 @@ namespace FlaUI.UIA3.Patterns
         {
             get
             {
-                var nativeRange = Com.Call(() => NativePattern.DocumentRange);
+                var nativeRange = FlaUI.Core.Tools.Com.Call(() => NativePattern.DocumentRange);
                 return TextRangeConverter.NativeToManaged((UIA3Automation)FrameworkAutomationElement.Automation, nativeRange);
             }
         }
@@ -35,33 +35,33 @@ namespace FlaUI.UIA3.Patterns
         {
             get
             {
-                var nativeObject = Com.Call(() => NativePattern.SupportedTextSelection);
+                var nativeObject = FlaUI.Core.Tools.Com.Call(() => NativePattern.SupportedTextSelection);
                 return (SupportedTextSelection)nativeObject;
             }
         }
 
         public override ITextRange[] GetSelection()
         {
-            var nativeRanges = Com.Call(() => NativePattern.GetSelection());
+            var nativeRanges = FlaUI.Core.Tools.Com.Call(() => NativePattern.GetSelection());
             return TextRangeConverter.NativeArrayToManaged((UIA3Automation)FrameworkAutomationElement.Automation, nativeRanges);
         }
 
         public override ITextRange[] GetVisibleRanges()
         {
-            var nativeRanges = Com.Call(() => NativePattern.GetVisibleRanges());
+            var nativeRanges = FlaUI.Core.Tools.Com.Call(() => NativePattern.GetVisibleRanges());
             return TextRangeConverter.NativeArrayToManaged((UIA3Automation)FrameworkAutomationElement.Automation, nativeRanges);
         }
 
         public override ITextRange RangeFromChild(AutomationElement child)
         {
             var nativeChild = child.ToNative();
-            var nativeRange = Com.Call(() => NativePattern.RangeFromChild(nativeChild));
+            var nativeRange = FlaUI.Core.Tools.Com.Call(() => NativePattern.RangeFromChild(nativeChild));
             return TextRangeConverter.NativeToManaged((UIA3Automation)FrameworkAutomationElement.Automation, nativeRange);
         }
 
         public override ITextRange RangeFromPoint(Point point)
         {
-            var nativeRange = Com.Call(() => NativePattern.RangeFromPoint(point.ToTagPoint()));
+            var nativeRange = FlaUI.Core.Tools.Com.Call(() => NativePattern.RangeFromPoint(point.ToTagPoint()));
             return TextRangeConverter.NativeToManaged((UIA3Automation)FrameworkAutomationElement.Automation, nativeRange);
         }
     }

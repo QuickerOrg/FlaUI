@@ -19,7 +19,7 @@ namespace FlaUI.UIA3.Patterns
 
         public override void SetDockPosition(DockPosition dockPos)
         {
-            Com.Call(() => NativePattern.SetDockPosition((UIA.DockPosition)dockPos));
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.SetDockPosition((UIA.DockPosition)dockPos));
         }
     }
 

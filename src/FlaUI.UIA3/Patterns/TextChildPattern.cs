@@ -22,7 +22,7 @@ namespace FlaUI.UIA3.Patterns
         {
             get
             {
-                var nativeElement = Com.Call(() => NativePattern.TextContainer);
+                var nativeElement = FlaUI.Core.Tools.Com.Call(() => NativePattern.TextContainer);
                 return AutomationElementConverter.NativeToManaged((UIA3Automation)FrameworkAutomationElement.Automation, nativeElement);
             }
         }
@@ -31,7 +31,7 @@ namespace FlaUI.UIA3.Patterns
         {
             get
             {
-                var nativeRange = Com.Call(() => NativePattern.TextRange);
+                var nativeRange = FlaUI.Core.Tools.Com.Call(() => NativePattern.TextRange);
                 return TextRangeConverter.NativeToManaged((UIA3Automation)FrameworkAutomationElement.Automation, nativeRange);
             }
         }

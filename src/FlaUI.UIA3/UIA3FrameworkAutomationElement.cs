@@ -150,7 +150,7 @@ namespace FlaUI.UIA3
             {
                 // Variant 1: Directly try getting the point
                 var tagPoint = new UIA.tagPOINT { x = 0, y = 0 };
-                if (Com.Call(() => NativeElement.GetClickablePoint(out tagPoint)) != 0)
+                if (FlaUI.Core.Tools.Com.Call(() => NativeElement.GetClickablePoint(out tagPoint)) != 0)
                 {
                     point = new Point(tagPoint.x, tagPoint.y);
                     return true;

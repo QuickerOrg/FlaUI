@@ -23,7 +23,7 @@ namespace FlaUI.UIA3.Patterns
 
         public override void SetValue(double val)
         {
-            Com.Call(() => NativePattern.SetValue(val));
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.SetValue(val));
         }
     }
 

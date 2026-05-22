@@ -21,7 +21,7 @@ namespace FlaUI.UIA3.Patterns
 
         public override AutomationElement GetItem(int row, int column)
         {
-            var nativeItem = Com.Call(() => NativePattern.GetItem(row, column));
+            var nativeItem = FlaUI.Core.Tools.Com.Call(() => NativePattern.GetItem(row, column));
             return AutomationElementConverter.NativeToManaged((UIA3Automation)FrameworkAutomationElement.Automation, nativeItem);
         }
     }

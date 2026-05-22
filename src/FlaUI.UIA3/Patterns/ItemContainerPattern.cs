@@ -20,7 +20,7 @@ namespace FlaUI.UIA3.Patterns
 
         public AutomationElement FindItemByProperty(AutomationElement? startAfter, PropertyId? property, object? value)
         {
-            var foundNativeElement = Com.Call(() =>
+            var foundNativeElement = FlaUI.Core.Tools.Com.Call(() =>
                 NativePattern.FindItemByProperty(
                     startAfter?.ToNative(),
                     property?.Id ?? 0, ValueConverter.ToNative(value)));

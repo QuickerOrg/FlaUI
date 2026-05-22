@@ -20,17 +20,17 @@ namespace FlaUI.UIA3.Patterns
 
         public override void Move(double x, double y)
         {
-            Com.Call(() => NativePattern.Move(x, y));
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.Move(x, y));
         }
 
         public override void Resize(double width, double height)
         {
-            Com.Call(() => NativePattern.Resize(width, height));
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.Resize(width, height));
         }
 
         public override void Rotate(double degrees)
         {
-            Com.Call(() => NativePattern.Rotate(degrees));
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.Rotate(degrees));
         }
     }
 

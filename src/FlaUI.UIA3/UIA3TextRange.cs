@@ -24,54 +24,54 @@ namespace FlaUI.UIA3
 
         public void AddToSelection()
         {
-            Com.Call(() => NativeRange.AddToSelection());
+            FlaUI.Core.Tools.Com.Call(() => NativeRange.AddToSelection());
         }
 
         public ITextRange Clone()
         {
-            var clonedTextRangeNative = Com.Call(() => NativeRange.Clone());
+            var clonedTextRangeNative = FlaUI.Core.Tools.Com.Call(() => NativeRange.Clone());
             return TextRangeConverter.NativeToManaged(Automation, clonedTextRangeNative);
         }
 
         public bool Compare(ITextRange range)
         {
             var nativeRange = ToNativeRange(range);
-            return Com.Call(() => NativeRange.Compare(nativeRange)) != 0;
+            return FlaUI.Core.Tools.Com.Call(() => NativeRange.Compare(nativeRange)) != 0;
         }
 
         public int CompareEndpoints(TextPatternRangeEndpoint srcEndPoint, ITextRange targetRange, TextPatternRangeEndpoint targetEndPoint)
         {
             var nativeRange = ToNativeRange(targetRange);
-            return Com.Call(() => NativeRange.CompareEndpoints((UIA.TextPatternRangeEndpoint)srcEndPoint, nativeRange, (UIA.TextPatternRangeEndpoint)targetEndPoint));
+            return FlaUI.Core.Tools.Com.Call(() => NativeRange.CompareEndpoints((UIA.TextPatternRangeEndpoint)srcEndPoint, nativeRange, (UIA.TextPatternRangeEndpoint)targetEndPoint));
         }
 
         public void ExpandToEnclosingUnit(TextUnit textUnit)
         {
-            Com.Call(() => NativeRange.ExpandToEnclosingUnit((UIA.TextUnit)textUnit));
+            FlaUI.Core.Tools.Com.Call(() => NativeRange.ExpandToEnclosingUnit((UIA.TextUnit)textUnit));
         }
 
         public ITextRange FindAttribute(TextAttributeId attribute, object value, bool backward)
         {
             var nativeValue = ValueConverter.ToNative(value);
-            var nativeTextRange = Com.Call(() => NativeRange.FindAttribute(attribute.Id, nativeValue, backward.ToInt()));
+            var nativeTextRange = FlaUI.Core.Tools.Com.Call(() => NativeRange.FindAttribute(attribute.Id, nativeValue, backward.ToInt()));
             return TextRangeConverter.NativeToManaged(Automation, nativeTextRange);
         }
 
         public ITextRange FindText(string text, bool backward, bool ignoreCase)
         {
-            var nativeTextRange = Com.Call(() => NativeRange.FindText(text, backward.ToInt(), ignoreCase.ToInt()));
+            var nativeTextRange = FlaUI.Core.Tools.Com.Call(() => NativeRange.FindText(text, backward.ToInt(), ignoreCase.ToInt()));
             return TextRangeConverter.NativeToManaged(Automation, nativeTextRange);
         }
 
         public object GetAttributeValue(TextAttributeId attribute)
         {
-            var nativeValue = Com.Call(() => NativeRange.GetAttributeValue(attribute.Id));
+            var nativeValue = FlaUI.Core.Tools.Com.Call(() => NativeRange.GetAttributeValue(attribute.Id));
             return attribute.Convert<object>(Automation, nativeValue);
         }
 
         public Rectangle[] GetBoundingRectangles()
         {
-            var unrolledRects = Com.Call(() => NativeRange.GetBoundingRectangles());
+            var unrolledRects = FlaUI.Core.Tools.Com.Call(() => NativeRange.GetBoundingRectangles());
             if (unrolledRects == null)
             {
                 return null;
@@ -89,50 +89,50 @@ namespace FlaUI.UIA3
 
         public AutomationElement[] GetChildren()
         {
-            var nativeChildren = Com.Call(() => NativeRange.GetChildren());
+            var nativeChildren = FlaUI.Core.Tools.Com.Call(() => NativeRange.GetChildren());
             return AutomationElementConverter.NativeArrayToManaged(Automation, nativeChildren);
         }
 
         public AutomationElement GetEnclosingElement()
         {
-            var nativeElement = Com.Call(() => NativeRange.GetEnclosingElement());
+            var nativeElement = FlaUI.Core.Tools.Com.Call(() => NativeRange.GetEnclosingElement());
             return AutomationElementConverter.NativeToManaged(Automation, nativeElement);
         }
 
         public string GetText(int maxLength)
         {
-            return Com.Call(() => NativeRange.GetText(maxLength));
+            return FlaUI.Core.Tools.Com.Call(() => NativeRange.GetText(maxLength));
         }
 
         public int Move(TextUnit unit, int count)
         {
-            return Com.Call(() => NativeRange.Move((UIA.TextUnit)unit, count));
+            return FlaUI.Core.Tools.Com.Call(() => NativeRange.Move((UIA.TextUnit)unit, count));
         }
 
         public void MoveEndpointByRange(TextPatternRangeEndpoint srcEndPoint, ITextRange targetRange, TextPatternRangeEndpoint targetEndPoint)
         {
             var nativeRange = ToNativeRange(targetRange);
-            Com.Call(() => NativeRange.MoveEndpointByRange((UIA.TextPatternRangeEndpoint)srcEndPoint, nativeRange, (UIA.TextPatternRangeEndpoint)targetEndPoint));
+            FlaUI.Core.Tools.Com.Call(() => NativeRange.MoveEndpointByRange((UIA.TextPatternRangeEndpoint)srcEndPoint, nativeRange, (UIA.TextPatternRangeEndpoint)targetEndPoint));
         }
 
         public int MoveEndpointByUnit(TextPatternRangeEndpoint endpoint, TextUnit unit, int count)
         {
-            return Com.Call(() => NativeRange.MoveEndpointByUnit((UIA.TextPatternRangeEndpoint)endpoint, (UIA.TextUnit)unit, count));
+            return FlaUI.Core.Tools.Com.Call(() => NativeRange.MoveEndpointByUnit((UIA.TextPatternRangeEndpoint)endpoint, (UIA.TextUnit)unit, count));
         }
 
         public void RemoveFromSelection()
         {
-            Com.Call(() => NativeRange.RemoveFromSelection());
+            FlaUI.Core.Tools.Com.Call(() => NativeRange.RemoveFromSelection());
         }
 
         public void ScrollIntoView(bool alignToTop)
         {
-            Com.Call(() => NativeRange.ScrollIntoView(alignToTop.ToInt()));
+            FlaUI.Core.Tools.Com.Call(() => NativeRange.ScrollIntoView(alignToTop.ToInt()));
         }
 
         public void Select()
         {
-            Com.Call(() => NativeRange.Select());
+            FlaUI.Core.Tools.Com.Call(() => NativeRange.Select());
         }
 
         public UIA3TextRange2 AsTextRange2()

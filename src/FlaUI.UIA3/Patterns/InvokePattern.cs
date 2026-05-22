@@ -32,7 +32,7 @@ namespace FlaUI.UIA3.Patterns
         /// <inheritdoc />
         public override void Invoke()
         {
-            Com.Call(() => NativePattern.Invoke());
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.Invoke());
         }
     }
 

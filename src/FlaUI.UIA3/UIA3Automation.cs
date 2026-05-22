@@ -98,7 +98,7 @@ namespace FlaUI.UIA3
         /// <inheritdoc />
         public override AutomationElement GetDesktop()
         {
-            return Com.Call(() =>
+            return FlaUI.Core.Tools.Com.Call(() =>
             {
                 var desktop = CacheRequest.IsCachingActive
                     ? NativeAutomation.GetRootElementBuildCache(CacheRequest.Current.ToNative(this))
@@ -110,7 +110,7 @@ namespace FlaUI.UIA3
         /// <inheritdoc />
         public override AutomationElement FromPoint(Point point)
         {
-            return Com.Call(() =>
+            return FlaUI.Core.Tools.Com.Call(() =>
             {
                 var nativePoint = point.ToTagPoint();
                 var nativeElement = CacheRequest.IsCachingActive
@@ -123,7 +123,7 @@ namespace FlaUI.UIA3
         /// <inheritdoc />
         public override AutomationElement FromHandle(IntPtr hwnd)
         {
-            return Com.Call(() =>
+            return FlaUI.Core.Tools.Com.Call(() =>
             {
                 var nativeElement = CacheRequest.IsCachingActive
                     ? NativeAutomation.ElementFromHandleBuildCache(hwnd, CacheRequest.Current.ToNative(this))
@@ -135,7 +135,7 @@ namespace FlaUI.UIA3
         /// <inheritdoc />
         public override AutomationElement FocusedElement()
         {
-            return Com.Call(() =>
+            return FlaUI.Core.Tools.Com.Call(() =>
             {
                 var nativeElement = CacheRequest.IsCachingActive
                     ? NativeAutomation.GetFocusedElementBuildCache(CacheRequest.Current.ToNative(this))
@@ -148,7 +148,7 @@ namespace FlaUI.UIA3
         public override FocusChangedEventHandlerBase RegisterFocusChangedEvent(Action<AutomationElement> action)
         {
             var eventHandler = new UIA3FocusChangedEventHandler(this, action);
-            Com.Call(() => NativeAutomation.AddFocusChangedEventHandler(null, eventHandler));
+            FlaUI.Core.Tools.Com.Call(() => NativeAutomation.AddFocusChangedEventHandler(null, eventHandler));
             return eventHandler;
         }
 

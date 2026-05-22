@@ -30,17 +30,17 @@ namespace FlaUI.UIA3.Patterns
 
         public override void DoDefaultAction()
         {
-            Com.Call(() => NativePattern.DoDefaultAction());
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.DoDefaultAction());
         }
 
         public override void Select(int flagsSelect)
         {
-            Com.Call(() => NativePattern.Select(flagsSelect));
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.Select(flagsSelect));
         }
 
         public override void SetValue(string value)
         {
-            Com.Call(() => NativePattern.SetValue(value));
+            FlaUI.Core.Tools.Com.Call(() => NativePattern.SetValue(value));
         }
     }
 

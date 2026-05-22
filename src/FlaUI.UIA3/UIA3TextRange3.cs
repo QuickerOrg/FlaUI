@@ -22,14 +22,14 @@ namespace FlaUI.UIA3
         public AutomationElement GetEnclosingElementBuildCache(CacheRequest cacheRequest)
         {
             var nativeCacheRequest = cacheRequest.ToNative(Automation);
-            var nativeElement = Com.Call(() => NativeRange3.GetEnclosingElementBuildCache(nativeCacheRequest));
+            var nativeElement = FlaUI.Core.Tools.Com.Call(() => NativeRange3.GetEnclosingElementBuildCache(nativeCacheRequest));
             return AutomationElementConverter.NativeToManaged(Automation, nativeElement);
         }
 
         public AutomationElement[] GetChildrenBuildCache(CacheRequest cacheRequest)
         {
             var nativeCacheRequest = cacheRequest.ToNative(Automation);
-            var nativeElements = Com.Call(() => NativeRange3.GetChildrenBuildCache(nativeCacheRequest));
+            var nativeElements = FlaUI.Core.Tools.Com.Call(() => NativeRange3.GetChildrenBuildCache(nativeCacheRequest));
             return AutomationElementConverter.NativeArrayToManaged(Automation, nativeElements);
         }
 

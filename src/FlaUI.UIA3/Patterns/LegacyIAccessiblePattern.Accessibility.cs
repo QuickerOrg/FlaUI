@@ -9,7 +9,7 @@ namespace FlaUI.UIA3.Patterns
         public override IAccessible GetIAccessible()
         {
             // ReSharper disable once SuspiciousTypeConversion.Global
-            return Com.Call(() => (IAccessible)NativePattern.GetIAccessible());
+            return FlaUI.Core.Tools.Com.Call(() => (IAccessible)NativePattern.GetIAccessible());
         }
     }
 }
