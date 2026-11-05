@@ -5,7 +5,8 @@
   </PropertyGroup>
   <Import Project="$(_FlaUIParentProps)" Condition="Exists('$(_FlaUIParentProps)')" />
 
-  <PropertyGroup Condition="'$(UseArtifactsOutput)' == 'true' and ('$(MSBuildProjectName)' == 'FlaUI.Core' or '$(MSBuildProjectName)' == 'FlaUI.UIA2' or '$(MSBuildProjectName)' == 'FlaUI.UIA3')">
+  <!-- ArtifactsPath can enable artifacts after Directory.Build.props; define the harmless name early. -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'FlaUI.Core' or '$(MSBuildProjectName)' == 'FlaUI.UIA2' or '$(MSBuildProjectName)' == 'FlaUI.UIA3'">
     <ArtifactsProjectName Condition="'$(ArtifactsProjectName)' == '' and '$(Platform)' == 'ARM64'">$(MSBuildProjectName)_ARM64</ArtifactsProjectName>
     <ArtifactsProjectName Condition="'$(ArtifactsProjectName)' == ''">$(MSBuildProjectName)</ArtifactsProjectName>
     <!-- EnableSigning is not an SDK artifacts pivot; separate both restore and compilation caches. -->
