@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Build">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <TargetFrameworks>net472;net6.0-windows;net10.0-windows10.0.19041.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Nullable>enable</Nullable>
@@ -30,8 +31,11 @@
     <AssemblyOriginatorKeyFile>../../FlaUI.snk</AssemblyOriginatorKeyFile>
     <PublicSign Condition="'$(OS)'!='Windows_NT'">true</PublicSign>
     <PackageId>FlaUI.UIA3.Signed</PackageId>
-    <OutputPath>bin\$(Configuration)\Signed</OutputPath>
-    <IntermediateOutputPath>obj\$(Configuration)\Signed</IntermediateOutputPath>
+    <OutputPath Condition="'$(UseArtifactsOutput)' != 'true'">bin\$(Configuration)\Signed</OutputPath>
+    <IntermediateOutputPath Condition="'$(UseArtifactsOutput)' != 'true'">obj\$(Configuration)\Signed</IntermediateOutputPath>
+    <!-- 必须和 Core 一起隔离，避免连续构建 x64/ARM64 时复用旧引用程序集。 -->
+    <OutputPath Condition="'$(UseArtifactsOutput)' != 'true' and '$(Platform)' == 'ARM64'">bin\ARM64\$(Configuration)\Signed</OutputPath>
+    <IntermediateOutputPath Condition="'$(UseArtifactsOutput)' != 'true' and '$(Platform)' == 'ARM64'">obj\ARM64\$(Configuration)\Signed</IntermediateOutputPath>
   </PropertyGroup>
 
   <ItemGroup Label="Project References">

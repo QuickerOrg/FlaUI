@@ -1,0 +1,15 @@
+<Project>
+  <!-- Retain the consuming repository's settings before SDK output paths are inferred. -->
+  <PropertyGroup>
+    <_FlaUIParentProps>$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..'))</_FlaUIParentProps>
+  </PropertyGroup>
+  <Import Project="$(_FlaUIParentProps)" Condition="Exists('$(_FlaUIParentProps)')" />
+
+  <!-- ArtifactsPath can enable artifacts after Directory.Build.props; define the harmless name early. -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'FlaUI.Core' or '$(MSBuildProjectName)' == 'FlaUI.UIA2' or '$(MSBuildProjectName)' == 'FlaUI.UIA3'">
+    <ArtifactsProjectName Condition="'$(ArtifactsProjectName)' == '' and '$(Platform)' == 'ARM64'">$(MSBuildProjectName)_ARM64</ArtifactsProjectName>
+    <ArtifactsProjectName Condition="'$(ArtifactsProjectName)' == ''">$(MSBuildProjectName)</ArtifactsProjectName>
+    <!-- EnableSigning is not an SDK artifacts pivot; separate both restore and compilation caches. -->
+    <ArtifactsProjectName Condition="'$(EnableSigning)' == 'true'">$(ArtifactsProjectName)_Signed</ArtifactsProjectName>
+  </PropertyGroup>
+</Project>

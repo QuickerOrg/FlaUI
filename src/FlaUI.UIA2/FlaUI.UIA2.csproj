@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup Label="Build">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <TargetFrameworks>net48;net6.0-windows;net8.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF> <!-- Needed so System.Windows.Automation is added -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -31,8 +32,10 @@
     <AssemblyOriginatorKeyFile>../../FlaUI.snk</AssemblyOriginatorKeyFile>
     <PublicSign Condition="'$(OS)'!='Windows_NT'">true</PublicSign>
     <PackageId>FlaUI.UIA2.Signed</PackageId>
-    <OutputPath>bin\$(Configuration)\Signed</OutputPath>
-    <IntermediateOutputPath>obj\$(Configuration)\Signed</IntermediateOutputPath>
+    <OutputPath Condition="'$(UseArtifactsOutput)' != 'true'">bin\$(Configuration)\Signed</OutputPath>
+    <IntermediateOutputPath Condition="'$(UseArtifactsOutput)' != 'true'">obj\$(Configuration)\Signed</IntermediateOutputPath>
+    <OutputPath Condition="'$(UseArtifactsOutput)' != 'true' and '$(Platform)' == 'ARM64'">bin\ARM64\$(Configuration)\Signed</OutputPath>
+    <IntermediateOutputPath Condition="'$(UseArtifactsOutput)' != 'true' and '$(Platform)' == 'ARM64'">obj\ARM64\$(Configuration)\Signed</IntermediateOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
