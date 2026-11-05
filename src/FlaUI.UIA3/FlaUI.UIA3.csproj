@@ -32,6 +32,9 @@
     <PackageId>FlaUI.UIA3.Signed</PackageId>
     <OutputPath Condition="'$(UseArtifactsOutput)' != 'true'">bin\$(Configuration)\Signed</OutputPath>
     <IntermediateOutputPath Condition="'$(UseArtifactsOutput)' != 'true'">obj\$(Configuration)\Signed</IntermediateOutputPath>
+    <!-- 必须和 Core 一起隔离，避免连续构建 x64/ARM64 时复用旧引用程序集。 -->
+    <OutputPath Condition="'$(UseArtifactsOutput)' != 'true' and '$(Platform)' == 'ARM64'">bin\ARM64\$(Configuration)\Signed</OutputPath>
+    <IntermediateOutputPath Condition="'$(UseArtifactsOutput)' != 'true' and '$(Platform)' == 'ARM64'">obj\ARM64\$(Configuration)\Signed</IntermediateOutputPath>
   </PropertyGroup>
 
   <ItemGroup Label="Project References">

@@ -33,6 +33,9 @@
     <PackageId>FlaUI.Core.Signed</PackageId>
     <OutputPath Condition="'$(UseArtifactsOutput)' != 'true'">bin\$(Configuration)\Signed</OutputPath>
     <IntermediateOutputPath Condition="'$(UseArtifactsOutput)' != 'true'">obj\$(Configuration)\Signed</IntermediateOutputPath>
+    <!-- 在 SDK 推导 OutDir、TargetPath 和引用缓存前隔离 ARM64；保留原有 x64 与 SDK artifacts 布局。 -->
+    <OutputPath Condition="'$(UseArtifactsOutput)' != 'true' and '$(Platform)' == 'ARM64'">bin\ARM64\$(Configuration)\Signed</OutputPath>
+    <IntermediateOutputPath Condition="'$(UseArtifactsOutput)' != 'true' and '$(Platform)' == 'ARM64'">obj\ARM64\$(Configuration)\Signed</IntermediateOutputPath>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net6.0-windows'">
