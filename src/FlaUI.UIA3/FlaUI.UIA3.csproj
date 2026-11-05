@@ -30,8 +30,8 @@
     <AssemblyOriginatorKeyFile>../../FlaUI.snk</AssemblyOriginatorKeyFile>
     <PublicSign Condition="'$(OS)'!='Windows_NT'">true</PublicSign>
     <PackageId>FlaUI.UIA3.Signed</PackageId>
-    <OutputPath>bin\$(Configuration)\Signed</OutputPath>
-    <IntermediateOutputPath>obj\$(Configuration)\Signed</IntermediateOutputPath>
+    <OutputPath Condition="'$(UseArtifactsOutput)' != 'true'">bin\$(Configuration)\Signed</OutputPath>
+    <IntermediateOutputPath Condition="'$(UseArtifactsOutput)' != 'true'">obj\$(Configuration)\Signed</IntermediateOutputPath>
   </PropertyGroup>
 
   <ItemGroup Label="Project References">
